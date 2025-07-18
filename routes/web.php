@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Livewire\MainComponent;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// composer require livewire/livewire para instalar as depedencias
+Route::get('/', MainComponent::class);
