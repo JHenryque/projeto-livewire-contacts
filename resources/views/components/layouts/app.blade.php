@@ -8,6 +8,7 @@
         <title>{{ $title ?? 'Page Title' }}</title>
     </head>
     <body>
+
         {{ $slot }}
 
         <script src="{{ asset('assets/bootstrap/bootstrap.bundle.min.js') }}"></script>
