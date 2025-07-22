@@ -30,11 +30,19 @@
         </div>
 
         @if($error)
-            <div class="alert alert-danger text-center mt-3">{{ $error }}</div>
+            <div class="alert alert-danger text-center mt-3"
+                x-data="{ show: true }"
+                x-show="show"
+                x-init="setTimeout(() => show = false, 3000)"
+            >{{ $error }}</div>
         @endif
 
         @if($success)
-            <div class="alert alert-success text-center mt-3">{{ $success }}</div>
+            <div class="alert alert-success text-center mt-3"
+                 x-data="{ show: true }"
+                 x-show="show"
+                 x-init="setTimeout(() => show = false, 3000)"
+            >{{ $success }}</div>
         @endif
 
     </form>
