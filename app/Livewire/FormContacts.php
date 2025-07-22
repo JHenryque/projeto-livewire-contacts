@@ -52,7 +52,10 @@ class FormContacts extends Component
         if ($resul->wasRecentlyCreated) {
             // clear all public properties  option 2
             $this->reset();
+            // messages
             $this->success = "Contact created added successfully.";
+            // create an event
+            $this->dispatch('contactAdded');
         } else {
             $this->error = "the contact already exists.";
         }
