@@ -12,6 +12,9 @@
                     <div class="col-3">Name: {{ $contact->name }}</div>
                     <div class="col">E-mail: {{ $contact->email }}</div>
                     <div class="col-4">Phone: {{ $contact->phone }}</div>
+                    <div class="col">
+                        <a class="btn btn-danger p-2" href="{{ route('contacts.delete', ['id' => $contact->id]) }}">Delete</a>
+                    </div>
                 </div>
             </div>
         @endforeach
