@@ -13,6 +13,7 @@
                     <div class="col">E-mail: {{ $contact->email }}</div>
                     <div class="col-4">Phone: {{ $contact->phone }}</div>
                     <div class="col">
+                        <a class="btn btn-primary p-2" href="{{ route('contacts.edit', ['id' => $contact->id]) }}">Edit</a>
                         <a class="btn btn-danger p-2" href="{{ route('contacts.delete', ['id' => $contact->id]) }}">Delete</a>
                     </div>
                 </div>
