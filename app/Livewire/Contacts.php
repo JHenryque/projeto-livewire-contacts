@@ -18,6 +18,11 @@ class Contacts extends Component
     #[On('contactAdded')]
     public function updateContactList()
     {
+        $this->updateContact();
+    }
+
+    public function updateContact()
+    {
         $this->contacts = Contact::all();
     }
     public function render()
