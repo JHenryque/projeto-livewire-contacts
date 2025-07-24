@@ -18,8 +18,8 @@ class FormContacts extends Component
     public $phone;
 
     // error and success messages
-    public $error = '';
-    public $success = '';
+//    public $error = '';
+//    public $success = '';
 
     public function newContact()
     {
@@ -53,11 +53,25 @@ class FormContacts extends Component
             // clear all public properties  option 2
             $this->reset();
             // messages
-            $this->success = "Contact created added successfully.";
+            //$this->success = "Contact created added successfully.";
             // create an event
             $this->dispatch('contactAdded');
+            // message success
+            $this->dispatch(
+                'notification',
+                type: 'success',
+                title: 'contact created successfully',
+                position: 'center',
+            );
         } else {
-            $this->error = "the contact already exists.";
+            //$this->error = "the contact already exists.";
+            // message de  error
+            $this->dispatch(
+                'notification',
+                type: 'error',
+                title: 'The contact already exists.',
+                position: 'center',
+            );
         }
     }
     public function render()

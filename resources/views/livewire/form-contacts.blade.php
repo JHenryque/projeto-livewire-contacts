@@ -32,21 +32,36 @@
             <button class="btn btn-secondary px-5">Save</button>
         </div>
 
-        @if($error)
-            <div class="alert alert-danger text-center mt-3"
-                x-data="{ show: true }"
-                x-show="show"
-                x-init="setTimeout(() => show = false, 3000)"
-            >{{ $error }}</div>
-        @endif
+{{--        @if($error)--}}
+{{--            <div class="alert alert-danger text-center mt-3"--}}
+{{--                x-data="{ show: true }"--}}
+{{--                x-show="show"--}}
+{{--                x-init="setTimeout(() => show = false, 3000)"--}}
+{{--            >{{ $error }}</div>--}}
+{{--        @endif--}}
 
-        @if($success)
-            <div class="alert alert-success text-center mt-3"
-                 x-data="{ show: true }"
-                 x-show="show"
-                 x-init="setTimeout(() => show = false, 3000)"
-            >{{ $success }}</div>
-        @endif
+{{--        @if($success)--}}
+{{--            <div class="alert alert-success text-center mt-3"--}}
+{{--                 x-data="{ show: true }"--}}
+{{--                 x-show="show"--}}
+{{--                 x-init="setTimeout(() => show = false, 3000)"--}}
+{{--            >{{ $success }}</div>--}}
+{{--        @endif--}}
 
     </form>
+
+    <script>
+
+        window.addEventListener('notification', (event) => {
+            let data = event.detail;
+            Swal.fire({
+                position: data.position,
+                icon: data.type,
+                title: data.title,
+                showConfirmButton: true,
+                timer: 2000,
+            })
+        });
+
+    </script>
 </div>
