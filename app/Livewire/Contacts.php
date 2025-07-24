@@ -14,8 +14,11 @@ class Contacts extends Component
 //    {
 //        $this->contacts = Contact::all();
 //    }
-
     use withPagination;
+
+    public string $search = '';
+    private int $contactsPerPage = 5;
+
     #[On('contactAdded')]
     public function updateContactList()
     {
@@ -28,6 +31,16 @@ class Contacts extends Component
 //    }
     public function render()
     {
-        return view('livewire.contacts')->with('contacts', Contact::paginate(3));
+        $contacts = null;
+             if ($this->search) {
+                 $contacts = Contact::where('name', 'like', '%' . $this->search . '%')
+                     ->orWhere('email', 'like', '%' . $this->search . '%')
+                     ->orWhere('phone', 'like', '%' . $this->search . '%')
+                     ->paginate($this->contactsPerPage);
+             } else {
+                 $contacts = Contact::paginate($this->contactsPerPage);
+             }
+
+        return view('livewire.contacts')->with('contacts', $contacts);
     }
 }
